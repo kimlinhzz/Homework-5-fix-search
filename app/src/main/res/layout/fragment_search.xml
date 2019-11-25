@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SearchFragment">
+
+    <EditText
+        android:id="@+id/ed_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_book_here"
+        android:autofillHints="@string/search_book_here"
+        android:inputType="text"
+        android:drawableStart="@drawable/ic_search_black"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:columnCount="2"
+        android:useDefaultMargins="true">
+        <Button
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="@string/search"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            style="?android:attr/buttonCornerRadius"
+            android:layout_column="0"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:text="@string/donate_book"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            style="?android:attr/buttonCornerRadius"
+            android:layout_column="1"/>
+    </GridLayout>
+
+</LinearLayout>
