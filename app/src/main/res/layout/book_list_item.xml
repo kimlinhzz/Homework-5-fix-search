@@ -19,7 +19,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:background="@drawable/out_of_the_box_book"
+                android:src="@drawable/out_of_the_box_book"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/book_cover"
                 android:layout_alignParentTop="true"/>
 

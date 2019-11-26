@@ -21,4 +21,7 @@
     <string name="remove">Remove</string>
     <string name="edit">Edit</string>
     <string name="read">Read</string>
+    <string name="by">By : </string>
+    <string name="year">, Year : </string>
+    <string name="enter_title">Enter title</string>
 </resources>

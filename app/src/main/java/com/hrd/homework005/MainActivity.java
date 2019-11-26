@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.book_content,new BookContentFragment())
                             .addToBackStack("Main")
                             .commit();
-                return false;
+                return true;
             }
         });
     }

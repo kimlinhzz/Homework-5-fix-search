@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/book_bg"
+    tools:context=".ReadBookActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imv_book_cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/walid"
+            android:contentDescription="@string/book_cover"
+            android:adjustViewBounds="true"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/read_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/book_cover"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="@color/colorBlack"
+                android:ellipsize="end"
+                android:layout_gravity="top"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/title_border"
+                android:layout_gravity="bottom"
+                android:paddingTop="25dp"
+                android:contentDescription="@string/book_cover"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/by"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:ellipsize="end"/>
+            <TextView
+                android:id="@+id/read_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_cover"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/year"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/read_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_cover"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:ellipsize="end"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/read_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/card_padding_15dp"
+            android:text="How to Read a Book is a 1940 book by the philosopher Mortimer J. Adler. He co-authored a heavily revised edition in 1972 with the editor Charles Van Doren, which gives guidelines for critically reading good and great books of any tradition."/>
+
+    </LinearLayout>
+</ScrollView>

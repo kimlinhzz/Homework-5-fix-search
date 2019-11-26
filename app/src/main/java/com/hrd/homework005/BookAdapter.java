@@ -1,6 +1,9 @@
 package com.hrd.homework005;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +42,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
         holder.book_option.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 PopupMenu popupMenu = new PopupMenu(mContext,holder.book_option);
                 popupMenu.inflate(R.menu.list_card_item);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -48,9 +51,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                         switch (item.getItemId()){
                             case R.id.remove:
                                 Toast.makeText(mContext, "Remove", Toast.LENGTH_SHORT).show();
+                                holder.removeBookAlert(v,1);
                                 break;
                             case R.id.read:
                                 Toast.makeText(mContext, "Read", Toast.LENGTH_SHORT).show();
+                                v.getContext().startActivity(new Intent(v.getContext(),ReadBookActivity.class));
                                 break;
                             case R.id.edit:
                                 Toast.makeText(mContext, "Edit", Toast.LENGTH_SHORT).show();
@@ -89,6 +94,31 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             book_price = itemView.findViewById(R.id.book_price);
             book_amount = itemView.findViewById(R.id.book_amount);
             book_option = itemView.findViewById(R.id.button_option);
+        }
+
+        private void removeBookAlert(View view, int id){
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setMessage("Are you sure to remove?")
+                    .setTitle("Remove Book");
+
+            // confirm delete button
+            builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            // cancel delete button
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         }
     }
 }
