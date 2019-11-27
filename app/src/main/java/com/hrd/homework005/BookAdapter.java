@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -37,8 +37,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        Book book = bookList.get(position);
+        final Book book = bookList.get(position);
         holder.book_title.setText(book.getTitle());
+        holder.book_author.setText(book.getAuthor());
+        holder.book_category.setText(book.getCategory());
+        holder.book_price.setText(Double.toString(book.getPrice()));
+        holder.book_amount.setText(Integer.toString(book.getAmount()));
+        holder.book_publish.setText(Integer.toString(book.getPublishYear()));
 
         holder.book_option.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,15 +55,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.remove:
-                                Toast.makeText(mContext, "Remove", Toast.LENGTH_SHORT).show();
-                                holder.removeBookAlert(v,1);
+                                removeBookAlert(v,book.getId());
                                 break;
                             case R.id.read:
-                                Toast.makeText(mContext, "Read", Toast.LENGTH_SHORT).show();
-                                v.getContext().startActivity(new Intent(v.getContext(),ReadBookActivity.class));
+                                Intent intent = new Intent(v.getContext(),ReadBookActivity.class);
+                                intent.putExtra("bookId",book.getId());
+                                v.getContext().startActivity(intent);
                                 break;
                             case R.id.edit:
-                                Toast.makeText(mContext, "Edit", Toast.LENGTH_SHORT).show();
+                                EditBookFragment bookFragment = new EditBookFragment();
+                                bookFragment.show(((FragmentActivity)v.getContext()).getSupportFragmentManager().beginTransaction(),"FF");
                                 break;
                         }
                         return false;
@@ -95,30 +101,31 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             book_amount = itemView.findViewById(R.id.book_amount);
             book_option = itemView.findViewById(R.id.button_option);
         }
+    }
 
-        private void removeBookAlert(View view, int id){
-            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-            builder.setMessage("Are you sure to remove?")
-                    .setTitle("Remove Book");
+    // remove
+    private void removeBookAlert(View view, int id){
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setMessage("Are you sure to remove?")
+                .setTitle("Remove Book");
 
-            // confirm delete button
-            builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+        // confirm delete button
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-                }
-            });
+            }
+        });
 
-            // cancel delete button
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+        // cancel delete button
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-                }
-            });
+            }
+        });
 
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
-        }
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

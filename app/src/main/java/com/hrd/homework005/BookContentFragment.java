@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.thedeanda.lorem.LoremIpsum;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,15 +51,10 @@ public class BookContentFragment extends Fragment {
     }
 
     private void loadRecyclerViewItem(){
-        for(int i=0; i<10; i++){
-            Book book = new Book(
-                    ""+i,
-                    ""+i,
-                    ""+i,
-                    i,i,i
-            );
-            bookList.add(book);
-        }
+        bookList = DatabaseClient.getInstance(getContext())
+                .getBookDatabase()
+                .getBookDao()
+                .getBookList();
         BookAdapter bookAdapter = new BookAdapter(getActivity(), bookList);
         recyclerView.setAdapter(bookAdapter);
     }

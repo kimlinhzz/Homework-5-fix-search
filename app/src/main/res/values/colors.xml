@@ -7,4 +7,6 @@
     <color name="colorOrangeDeep">#ff5722</color>
     <color name="colorGrayLighten">#bdbdbd</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBlackLight">#8e9eab</color>
+    <color name="colorTransparent70">#B3000000</color>
 </resources>

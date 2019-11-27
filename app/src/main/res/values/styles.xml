@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppFadeOut">
+        <item name="android:windowExitAnimation">@anim/modal_fade_out</item>
+        <item name="android:windowEnterAnimation">@anim/modal_fade_in</item>
+        <item name="android:windowBackground">@color/colorBlackLight</item>
+    </style>
+
 </resources>

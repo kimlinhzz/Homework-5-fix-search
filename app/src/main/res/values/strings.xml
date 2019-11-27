@@ -22,6 +22,26 @@
     <string name="edit">Edit</string>
     <string name="read">Read</string>
     <string name="by">By : </string>
-    <string name="year">, Year : </string>
+    <string name="year_tag">, Year : </string>
     <string name="enter_title">Enter title</string>
+    <string name="title">Title</string>
+    <string name="genre">Genre</string>
+    <string name="price">Price</string>
+    <string name="enter_price">Enter price</string>
+    <string name="enter_author">Enter author</string>
+    <string name="author">Author</string>
+    <string name="amount">Amount</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_publish_year">Enter publish year</string>
+    <string name="year">Year</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+
+    <string-array name="genre">
+        <item>Novel</item>
+        <item>Action</item>
+        <item>Horror</item>
+        <item>Education</item>
+    </string-array>
 </resources>

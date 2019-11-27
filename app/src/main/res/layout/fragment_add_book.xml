@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:minWidth="500dp"
+        android:minHeight="500dp"
+        android:elevation="@dimen/card_padding_15dp">
+
+        <!--  Image & FAB  -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/pop_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/book_cover"
+                android:scaleType="centerCrop"
+                android:src="@drawable/walid"
+                android:adjustViewBounds="true"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/browse_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/ic_add"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/colorOrangeDeep"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding_15dp">
+
+            <!-- Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_marginEnd="5dp"/>
+                <EditText
+                    android:id="@+id/add_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_title"
+                    android:autofillHints="@string/enter_title"
+                    android:inputType="text"
+                    android:textSize="@dimen/text_20sp"/>
+            </LinearLayout>
+            <!--  Genre    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_marginEnd="5dp"/>
+                <Spinner
+                    android:id="@+id/add_genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!--  Author    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/author"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_marginEnd="5dp"/>
+                <EditText
+                    android:id="@+id/add_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_author"
+                    android:autofillHints="@string/enter_author"
+                    android:inputType="text"
+                    android:textSize="@dimen/text_20sp"/>
+            </LinearLayout>
+            <!--  Price    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_marginEnd="5dp"/>
+                <EditText
+                    android:id="@+id/add_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_price"
+                    android:autofillHints="@string/enter_price"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/text_20sp"/>
+            </LinearLayout>
+            <!--  Year    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/year"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_marginEnd="5dp"/>
+                <EditText
+                    android:id="@+id/add_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_publish_year"
+                    android:autofillHints="@string/enter_publish_year"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/text_20sp"/>
+            </LinearLayout>
+            <!--  Amount    -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amount"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_marginEnd="5dp"/>
+                <EditText
+                    android:id="@+id/add_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_amount"
+                    android:autofillHints="@string/enter_amount"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/text_20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--  Button    -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:padding="@dimen/card_padding_15dp">
+
+            <Button
+                android:id="@+id/btn_add_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:background="@drawable/button_wave_effect"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_20sp"
+                android:layout_marginEnd="@dimen/card_padding_15dp"
+                android:layout_marginStart="@dimen/card_padding_15dp"
+                android:paddingEnd="@dimen/card_padding_15dp"
+                android:paddingStart="@dimen/card_padding_15dp"
+                style="?android:attr/buttonCornerRadius"/>
+
+            <Button
+                android:id="@+id/btn_add_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:background="@drawable/button_wave_effect"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_20sp"
+                android:paddingEnd="@dimen/card_padding_15dp"
+                android:paddingStart="@dimen/card_padding_15dp"
+                style="?android:attr/buttonCornerRadius"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

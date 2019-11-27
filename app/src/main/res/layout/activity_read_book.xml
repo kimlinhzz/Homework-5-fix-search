@@ -31,9 +31,12 @@
                 android:text="@string/book_cover"
                 android:gravity="center"
                 android:textSize="30sp"
+                android:paddingStart="@dimen/card_padding_15dp"
+                android:paddingEnd="@dimen/card_padding_15dp"
                 android:textColor="@color/colorBlack"
                 android:ellipsize="end"
-                android:layout_gravity="top"/>
+                android:layout_gravity="top"
+                android:lines="1"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -70,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/year"
+                android:text="@string/year_tag"
                 android:gravity="center"
                 android:textColor="@color/colorBlack"
                 android:ellipsize="end"/>
@@ -92,7 +95,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/card_padding_15dp"
-            android:text="How to Read a Book is a 1940 book by the philosopher Mortimer J. Adler. He co-authored a heavily revised edition in 1972 with the editor Charles Van Doren, which gives guidelines for critically reading good and great books of any tradition."/>
+            android:textSize="20sp"
+            android:text="@string/book_cover"/>
 
     </LinearLayout>
 </ScrollView>

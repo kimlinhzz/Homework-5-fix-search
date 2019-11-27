@@ -23,6 +23,7 @@
         android:columnCount="2"
         android:useDefaultMargins="true">
         <Button
+            android:id="@+id/btn_search"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
             android:text="@string/search"
@@ -31,6 +32,7 @@
             style="?android:attr/buttonCornerRadius"
             android:layout_column="0"/>
         <Button
+            android:id="@+id/btn_donate_book"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
             android:text="@string/donate_book"
