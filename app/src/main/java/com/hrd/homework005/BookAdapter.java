@@ -1,6 +1,5 @@
 package com.hrd.homework005;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,12 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private Context mContext;
     private List<Book> bookList;
+
+    public BookAdapter(){
+        bookList = new ArrayList<>();
+    }
 
     public BookAdapter(Context context, List<Book> bookList) {
         this.mContext = context;
@@ -80,7 +84,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return bookList.size();
+        if(bookList!=null)
+            return bookList.size();
+        return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -140,9 +146,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         alertDialog.show();
     }
 
-    void setData(List<Book> list){
-        bookList.clear();
-        bookList = list;
-        notifyDataSetChanged();
+    void swapData(List<Book> list){
+        if(list!=null){
+            this.bookList.clear();
+            this.bookList.addAll(list);
+            notifyDataSetChanged();
+        }
     }
 }

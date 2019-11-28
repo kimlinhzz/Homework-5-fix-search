@@ -71,7 +71,7 @@ public class AddBookFragment extends DialogFragment {
         title = view.findViewById(R.id.add_title);
         author = view.findViewById(R.id.add_author);
         price = view.findViewById(R.id.add_price);
-        year = author = view.findViewById(R.id.add_author);
+        year = view.findViewById(R.id.add_year);
         amount = view.findViewById(R.id.add_amount);
         spinner = view.findViewById(R.id.add_genre);
 

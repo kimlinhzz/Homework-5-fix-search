@@ -42,6 +42,6 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.Se
     @Override
     public void sendSearchText(String search) {
         BookContentFragment bookContentFragment = new BookContentFragment();
-        bookContentFragment.getMessage(search);
+        bookContentFragment.getSearchText(search);
     }
 }

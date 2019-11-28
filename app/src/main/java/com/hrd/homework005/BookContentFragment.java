@@ -1,12 +1,12 @@
 package com.hrd.homework005;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -14,15 +14,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BookContentFragment extends Fragment {
+public class BookContentFragment extends Fragment{
     private RecyclerView recyclerView;
-    private List<Book> bookList;
+    private List<Book> bookList = new ArrayList<>();
     private BookAdapter bookAdapter;
 
     @Override
@@ -36,30 +37,33 @@ public class BookContentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.book_content_rcv);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
-        bookList = DatabaseClient.getInstance(this.getContext())
+        bookList.addAll(DatabaseClient.getInstance(this.getContext())
                 .getBookDatabase()
                 .getBookDao()
-                .getBookList();
+                .getBookList());
         bookAdapter = new BookAdapter(getActivity(), bookList);
         recyclerView.setAdapter(bookAdapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
     }
 
-    void getMessage(String search){
-        bookList = DatabaseClient.getInstance(getContext())
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        bookList = DatabaseClient.getInstance(this.getContext())
+//                .getBookDatabase()
+//                .getBookDao()
+//                .getBookList();
+//        BookAdapter bookAdapter = new BookAdapter(getActivity(), bookList);
+//        recyclerView.setAdapter(bookAdapter);
+//    }
+
+    public void getSearchText(String search) {
+        bookList = DatabaseClient.getInstance(getActivity())
                 .getBookDatabase()
                 .getBookDao()
                 .searchBook(search);
-        Log.i("sssss", "getMessage: "+bookList.size());
-        bookAdapter.setData(bookList);
-        if(bookList!=null){
-
-
-                recyclerView.setAdapter(bookAdapter);
-                bookAdapter.notifyDataSetChanged();
-            }
-
+        bookAdapter.swapData(bookList);
+        Log.i("SSS", "sendSearchText: "+search);
     }
-
 }
