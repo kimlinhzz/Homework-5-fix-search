@@ -96,7 +96,8 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/card_padding_15dp"
             android:textSize="20sp"
-            android:text="@string/book_cover"/>
+            android:text="@string/book_cover"
+            android:justificationMode="inter_word"/>
 
     </LinearLayout>
 </ScrollView>

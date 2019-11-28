@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
@@ -69,7 +71,7 @@ public class AddBookFragment extends DialogFragment {
         title = view.findViewById(R.id.add_title);
         author = view.findViewById(R.id.add_author);
         price = view.findViewById(R.id.add_price);
-        year = author = view.findViewById(R.id.add_year);
+        year = author = view.findViewById(R.id.add_author);
         amount = view.findViewById(R.id.add_amount);
         spinner = view.findViewById(R.id.add_genre);
 
@@ -110,18 +112,18 @@ public class AddBookFragment extends DialogFragment {
                         Double.parseDouble(price.getText().toString()),
                         Integer.parseInt(amount.getText().toString())
                 );
+
                 DatabaseClient.getInstance(getContext())
                         .getBookDatabase()
                         .getBookDao()
                         .insertBook(book);
-                Log.i("BOOK", "onClick: "+book.toString());
-                Objects.requireNonNull(getDialog()).dismiss();
 
-                List<Book> list = DatabaseClient.getInstance(getContext())
-                        .getBookDatabase()
-                        .getBookDao()
-                        .getBookList();
-                Log.i("Data", "onClick: "+list.size());
+                new MainActivity()
+                        .reloadMain(
+                                ((AppCompatActivity) Objects.requireNonNull(getContext())).getSupportFragmentManager()
+                        );
+
+                Objects.requireNonNull(getDialog()).dismiss();
             }
         });
     }

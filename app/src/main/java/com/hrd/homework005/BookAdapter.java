@@ -1,5 +1,6 @@
 package com.hrd.homework005;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,10 +14,12 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private Context mContext;
@@ -41,9 +44,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.book_title.setText(book.getTitle());
         holder.book_author.setText(book.getAuthor());
         holder.book_category.setText(book.getCategory());
-        holder.book_price.setText(Double.toString(book.getPrice()));
-        holder.book_amount.setText(Integer.toString(book.getAmount()));
-        holder.book_publish.setText(Integer.toString(book.getPublishYear()));
+        holder.book_price.setText(String.format("%s",book.getPrice()));
+        holder.book_amount.setText(String.format("%s",book.getAmount()));
+        holder.book_publish.setText(String.format("%s",book.getPublishYear()));
 
         holder.book_option.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +58,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.remove:
-                                removeBookAlert(v,book.getId());
+                                removeBookAlert(v,book);
                                 break;
                             case R.id.read:
                                 Intent intent = new Intent(v.getContext(),ReadBookActivity.class);
@@ -63,8 +66,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                                 v.getContext().startActivity(intent);
                                 break;
                             case R.id.edit:
-                                EditBookFragment bookFragment = new EditBookFragment();
-                                bookFragment.show(((FragmentActivity)v.getContext()).getSupportFragmentManager().beginTransaction(),"FF");
+                                EditBookFragment bookFragment = new EditBookFragment(book.getId());
+                                bookFragment.show(((FragmentActivity)v.getContext()).getSupportFragmentManager().beginTransaction(),"Edit");
                                 break;
                         }
                         return false;
@@ -104,7 +107,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     // remove
-    private void removeBookAlert(View view, int id){
+    private void removeBookAlert(final View view, final Book book){
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setMessage("Are you sure to remove?")
                 .setTitle("Remove Book");
@@ -113,6 +116,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                DatabaseClient.getInstance(view.getContext())
+                        .getBookDatabase()
+                        .getBookDao()
+                        .deleteBook(book);
+
+                new MainActivity().reloadMain(
+                        ((AppCompatActivity) Objects.requireNonNull(view.getContext()))
+                                .getSupportFragmentManager());
 
             }
         });
@@ -127,5 +138,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    void setData(List<Book> list){
+        bookList.clear();
+        bookList = list;
+        notifyDataSetChanged();
     }
 }

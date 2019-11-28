@@ -24,6 +24,10 @@ public class Book {
     @ColumnInfo(name = "description")
     private String description;
 
+    public Book(){
+        // Required empty public constructor
+    }
+
     public Book(String title, String author, String category, String description, int publishYear, double price, int amount) {
         this.title = title;
         this.author = author;

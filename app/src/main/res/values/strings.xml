@@ -37,6 +37,10 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
+    <string name="dollar">$</string>
+    <string name="left">left</string>
+    <string name="by_author">by</string>
+    <string name="published_on">published on</string>
 
     <string-array name="genre">
         <item>Novel</item>

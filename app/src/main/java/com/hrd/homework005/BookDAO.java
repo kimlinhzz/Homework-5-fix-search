@@ -20,13 +20,13 @@ public interface BookDAO {
     @Insert
     void insertBook(Book... book);
 
-//    @Query("DELETE FROM books WHERE id=:id")
-//    void deleteBook(int id);
-//
-//    @Update
-//    void updateBook(int id,Book book);
-//
-//    @Query("SELECT * FROM books WHERE title=:title")
-//    List<Book> searchBook(String title);
+    @Delete
+    void deleteBook(Book book);
+
+    @Update
+    void updateBook(Book book);
+
+    @Query("SELECT * FROM books WHERE title LIKE :title")
+    List<Book> searchBook(String title);
 
 }

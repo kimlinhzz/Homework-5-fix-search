@@ -26,15 +26,24 @@ public class ReadBookActivity extends AppCompatActivity {
 
         int bookId =  getIntent().getIntExtra("bookId",1);
 
+        // read from db
         Book book = DatabaseClient.getInstance(getApplicationContext())
                 .getBookDatabase()
                 .getBookDao()
                 .findBookById(bookId);
 
+        // set text to view
         TextView description = findViewById(R.id.read_desc);
         description.setText(book.getDescription());
+
         TextView title = findViewById(R.id.read_title);
         title.setText(book.getTitle());
+
+        TextView author = findViewById(R.id.read_author);
+        author.setText(book.getAuthor());
+
+        TextView year = findViewById(R.id.read_year);
+        year.setText(String.format("%s",book.getPublishYear()));
     }
 
     @Override

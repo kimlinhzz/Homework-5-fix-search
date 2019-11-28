@@ -38,76 +38,153 @@
                 android:lines="1"
                 android:layout_below="@+id/book_cover_cv" />
 
-            <TextView
-                android:id="@+id/book_author"
+            <LinearLayout
+                android:id="@+id/layout_author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/out_of_the_box"
-                android:textSize="15sp"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/card_padding_15dp"
                 android:paddingEnd="@dimen/card_padding_15dp"
-                android:ellipsize="end"
-                android:layout_below="@+id/book_title" />
+                android:layout_below="@+id/book_title" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/by_author"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/book_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/out_of_the_box"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textSize="15sp"
+                    android:ellipsize="end" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/book_year"
+            <LinearLayout
+                android:id="@+id/layout_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/published_on_2019"
-                android:textSize="15sp"
+                android:layout_below="@+id/layout_author"
                 android:paddingStart="@dimen/card_padding_15dp"
                 android:paddingEnd="@dimen/card_padding_15dp"
-                android:ellipsize="end"
-                android:layout_below="@+id/book_author" />
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/published_on"
+                    android:textSize="15sp"
+                    android:ellipsize="end" />
+                <TextView
+                    android:id="@+id/book_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/published_on_2019"
+                    android:textSize="15sp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:ellipsize="end" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/book_category"
+            <LinearLayout
+                android:id="@+id/layout_genre"
+                android:layout_below="@+id/layout_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/category"
-                android:textSize="15sp"
                 android:paddingStart="@dimen/card_padding_15dp"
                 android:paddingEnd="@dimen/card_padding_15dp"
-                android:ellipsize="end"
-                android:layout_below="@+id/book_year" />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/book_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category"
+                    android:textSize="15sp"
+                    android:ellipsize="end" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/genre"
+                    android:textSize="15sp"
+                    android:ellipsize="end" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/book_price"
+            <RelativeLayout
+                android:id="@+id/layout_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dollar_25"
-                android:textColor="@color/colorOrangeDeep"
-                android:textSize="45sp"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/card_padding_15dp"
                 android:paddingEnd="@dimen/card_padding_15dp"
-                android:ellipsize="end"
-                android:layout_below="@+id/book_category" />
+                android:layout_below="@+id/layout_genre">
 
-            <TextView
-                android:id="@+id/book_amount"
+                <TextView
+                    android:id="@+id/dollar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dollar"
+                    android:textColor="@color/colorOrangeDeep"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/text_20sp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginEnd="@dimen/card_padding_15dp" />
+
+                <TextView
+                    android:id="@+id/book_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dollar_25"
+                    android:textColor="@color/colorOrangeDeep"
+                    android:textSize="45sp"
+                    android:layout_marginStart="@dimen/card_padding_15dp"
+                    android:ellipsize="end"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layout_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/_5_left"
-                android:textColor="@color/colorBlack"
-                android:textSize="20sp"
-                android:paddingStart="@dimen/card_padding_15dp"
-                android:paddingEnd="@dimen/card_padding_15dp"
-                android:ellipsize="end"
-                android:layout_below="@+id/book_price" />
+                android:layout_below="@+id/layout_price" >
+                <TextView
+                    android:id="@+id/book_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_5_left"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:paddingStart="@dimen/card_padding_15dp"
+                    android:paddingEnd="@dimen/card_padding_15dp"
+                    android:layout_alignParentStart="true"
+                    android:lines="1"
+                    android:ellipsize="end" />
 
-            <TextView
-                android:id="@+id/button_option"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/three_dots"
-                android:layout_alignTop="@+id/book_amount"
-                android:layout_alignEnd="@+id/book_amount"
-                android:textSize="20sp"
-                android:paddingEnd="20dp"
-                android:paddingStart="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:clickable="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/book_amount"
+                    android:ellipsize="end"
+                    android:text="@string/left"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/button_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/three_dots"
+                    android:textSize="20sp"
+                    android:paddingEnd="20dp"
+                    android:paddingStart="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="end"
+                    android:clickable="true"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
